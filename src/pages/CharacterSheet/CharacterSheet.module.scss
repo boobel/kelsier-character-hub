@@ -1,0 +1,344 @@
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+
+  hr {
+    flex: 1;
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--color-gold-muted);
+    opacity: 0.6;
+  }
+}
+
+.abilityScoresContainer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0.5rem;
+}
+
+.abilityScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+}
+
+.abilityScoreName {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.abilityScoreValue {
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  margin: 0.5rem;
+  margin-bottom: 0;
+}
+
+.abilityScoreModifier {
+  margin: 0;
+}
+
+.coreStatsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0.5rem;
+}
+
+.coreStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  background: var(--color-surface);
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --core-stat-accent: var(--color-text-muted);
+  --core-stat-accent-bright: var(--color-text-bright);
+  --core-stat-border-color: rgba(255, 255, 255, 0.08);
+}
+
+.coreStatHp {
+  --core-stat-accent: var(--color-teal);
+  --core-stat-accent-bright: #7fc8ad;
+  --core-stat-border-color: rgba(74, 154, 122, 0.3);
+}
+
+.coreStatAc {
+  --core-stat-accent: var(--color-blue);
+  --core-stat-accent-bright: #8bc0ff;
+  --core-stat-border-color: rgba(74, 158, 255, 0.3);
+}
+
+.coreStatInit {
+  --core-stat-accent: var(--color-orange);
+  --core-stat-accent-bright: #ff9a72;
+  --core-stat-border-color: rgba(255, 107, 53, 0.3);
+}
+
+.coreStatSpeed {
+  --core-stat-accent: var(--color-violet);
+  --core-stat-accent-bright: #c18aff;
+  --core-stat-border-color: rgba(168, 85, 247, 0.3);
+}
+
+.coreStatProf {
+  --core-stat-accent: var(--color-gold);
+  --core-stat-accent-bright: var(--color-gold-bright);
+  --core-stat-border-color: rgba(212, 184, 130, 0.3);
+}
+
+.coreStatPerception {
+  --core-stat-accent: var(--color-purple);
+  --core-stat-accent-bright: #a99bd6;
+  --core-stat-border-color: rgba(122, 111, 168, 0.3);
+}
+
+.coreStatHp,
+.coreStatAc,
+.coreStatInit,
+.coreStatSpeed,
+.coreStatProf,
+.coreStatPerception {
+  border-left: 3px solid var(--core-stat-accent);
+  border-color: var(--core-stat-border-color);
+}
+
+.coreStatName {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  color: var(--color-text-muted);
+}
+
+.coreStatValue {
+  margin: 0.5rem 0 0;
+  color: var(--core-stat-accent-bright);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.coreStatDesc {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+}
+
+.abilitiesPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  gap: 0.75rem;
+  margin: 1rem 0.5rem;
+  align-items: start;
+}
+
+.skillsLeftColumn,
+.skillsRightColumn {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.skillsLeftColumn {
+  align-content: start;
+}
+
+.skillsRightColumn {
+  align-content: start;
+}
+
+.tableShell {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: var(--color-surface);
+}
+
+.tableGroupTitle {
+  padding: 0.6rem 0.9rem 0.45rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-gold-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns:
+    minmax(10rem, 1fr) minmax(7.5rem, max-content)
+    minmax(4.5rem, max-content) minmax(5rem, max-content) minmax(0, 1.6fr);
+  gap: 0.5rem 1rem;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+.tableHeader span {
+  min-width: 0;
+}
+
+.checkList {
+  justify-self: start;
+  box-sizing: border-box;
+  width: min(100%, 16rem);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 2px;
+  padding: 0.6rem 0.75rem;
+}
+
+.checkTitle {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-gold-muted);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+}
+
+.checkItem {
+  display: grid;
+  grid-template-columns: 0.65rem minmax(0, 1fr) auto;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.18rem 0;
+  padding-right: 0.5rem;
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  color: var(--color-text);
+}
+
+.checkItem + .checkItem {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.checkDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-text-muted);
+  background: transparent;
+  box-shadow: none;
+}
+
+.proficient {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  box-shadow: 0 0 0.35rem rgba(212, 184, 130, 0.35);
+}
+
+.expertise {
+  border-color: var(--color-teal);
+  background: var(--color-teal);
+  box-shadow: 0 0 0.35rem rgba(74, 154, 122, 0.35);
+}
+
+.half {
+  border-color: var(--color-purple);
+  background: var(--color-purple);
+  box-shadow: 0 0 0.35rem rgba(122, 111, 168, 0.35);
+}
+
+.checkBonus {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.profRows {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0.5rem;
+}
+
+.profRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+}
+
+.profType {
+  width: 110px;
+  flex-shrink: 0;
+  color: var(--color-gold-muted);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+.profList {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .abilitiesPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .skillsLeftColumn,
+  .skillsRightColumn {
+    gap: 0.5rem;
+  }
+
+  .tableHeader {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .profRow {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .profType {
+    width: auto;
+  }
+}

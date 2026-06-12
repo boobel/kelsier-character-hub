@@ -1,0 +1,243 @@
+.parchmentWrap {
+  background: #f2ecdc;
+  color: #1a1510;
+  border-radius: 3px;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
+  position: relative;
+  font-family: "Crimson Pro", serif;
+  font-size: 15px;
+  line-height: 1.65;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid #b8a882;
+    pointer-events: none;
+    border-radius: 1px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid #8a7a5a;
+    pointer-events: none;
+    border-radius: 1px;
+    opacity: 0.35;
+  }
+}
+
+.parchEyebrow {
+  font-family: "Cinzel", serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #6b5d48;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.parchTitle {
+  font-family: "IM Fell English", serif;
+  font-size: 32px;
+  color: #8b1a1a;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.parchSubtitle {
+  font-family: "IM Fell English", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #6b5d48;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.parchDivider {
+  height: 1px;
+  background: #b8a882;
+  margin: 1.5rem 0;
+}
+
+.parchFlavor {
+  font-family: "IM Fell English", serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #3d3428;
+  border-left: 2px solid #b8a882;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.parchH2 {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8b1a1a;
+  border-bottom: 1px solid #b8a882;
+  padding-bottom: 3px;
+  margin: 1.5rem 0 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.parchP {
+  margin-bottom: 0.7rem;
+  color: #1a1510;
+}
+
+.parchLabel {
+  color: #6b5d48;
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.parchMuted {
+  color: #6b5d48;
+  font-size: 13px;
+}
+
+.parchSmallFlush {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.compactList {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.compactListItem {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.flowSpace {
+  margin-top: 1rem;
+}
+
+.parchUl {
+  padding-left: 1.4rem;
+  margin-bottom: 0.7rem;
+
+  li {
+    margin-bottom: 0.3rem;
+    color: #1a1510;
+  }
+}
+
+.parchTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 14px;
+
+  th {
+    font-family: "Cinzel", serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    border-bottom: 1px solid #b8a882;
+    padding: 5px 10px;
+    text-align: left;
+    color: #6b5d48;
+  }
+
+  td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(184, 168, 130, 0.3);
+    color: #1a1510;
+  }
+}
+
+.parchCallout {
+  background: rgba(139, 26, 26, 0.06);
+  border: 1px solid rgba(139, 26, 26, 0.25);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+
+.parchCalloutTitle {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #8b1a1a;
+  margin-bottom: 6px;
+}
+
+.parchSparkBox {
+  background: rgba(74, 154, 122, 0.06);
+  border: 1px solid rgba(74, 154, 122, 0.25);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+
+.parchSparkBoxTitle {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #2d5a47;
+  margin-bottom: 6px;
+}
+
+.parchStatblock {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid #b8a882;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.parchStatblockName {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  color: #1a1510;
+  font-weight: 600;
+}
+
+.parchStatblockType {
+  font-style: italic;
+  color: #6b5d48;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.parchStatLine {
+  display: flex;
+  gap: 10px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(184, 168, 130, 0.3);
+  font-size: 14px;
+}
+
+.parchStatLabel {
+  font-weight: 600;
+  color: #1a1510;
+  min-width: 90px;
+}
+
+.parchProperty {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.parchPropertyName {
+  font-weight: 600;
+  color: #1a1510;
+}
+
+.parchHr {
+  border: none;
+  border-top: 1px solid #b8a882;
+  margin: 8px 0;
+}
+
+@media (max-width: 43.75rem) {
+  .parchmentWrap {
+    padding: 1.5rem 1.25rem;
+  }
+}

@@ -1,0 +1,31 @@
+.checkList {
+  composes: checkList from "../../CharacterSheet.module.scss";
+}
+
+.checkTitle {
+  composes: checkTitle from "../../CharacterSheet.module.scss";
+}
+
+.checkItem {
+  composes: checkItem from "../../CharacterSheet.module.scss";
+}
+
+.checkDot {
+  composes: checkDot from "../../CharacterSheet.module.scss";
+}
+
+.proficient {
+  composes: proficient from "../../CharacterSheet.module.scss";
+}
+
+.expertise {
+  composes: expertise from "../../CharacterSheet.module.scss";
+}
+
+.half {
+  composes: half from "../../CharacterSheet.module.scss";
+}
+
+.checkBonus {
+  composes: checkBonus from "../../CharacterSheet.module.scss";
+}

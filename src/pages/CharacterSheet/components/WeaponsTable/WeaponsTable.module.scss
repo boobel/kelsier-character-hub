@@ -1,0 +1,52 @@
+.weaponRows {
+  display: grid;
+  gap: 0;
+}
+
+.weaponRow {
+  display: grid;
+  grid-template-columns:
+    minmax(10rem, 1fr) minmax(7.5rem, max-content)
+    minmax(4.5rem, max-content) minmax(5rem, max-content) minmax(0, 1.6fr);
+  gap: 0.5rem 1rem;
+  align-items: start;
+  padding: 0.9rem 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.weaponRow:last-child {
+  border-bottom: none;
+}
+
+.weaponRow > span {
+  min-width: 0;
+  color: var(--color-text);
+  font-family: var(--font-body-alt);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.weaponName {
+  font-weight: 700;
+}
+
+.weaponNotes {
+  align-self: center;
+  font-weight: 700;
+  font-size: 0.85rem !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .weaponRow {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.55rem 0.875rem;
+  }
+
+  .weaponRow > span {
+    font-size: 0.875rem;
+  }
+}

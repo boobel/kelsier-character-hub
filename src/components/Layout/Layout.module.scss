@@ -1,0 +1,7 @@
+.layout {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+  padding: 0 var(--page-gutter) 2rem;
+}

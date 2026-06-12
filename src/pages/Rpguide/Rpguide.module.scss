@@ -1,0 +1,185 @@
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+
+  hr {
+    flex: 1;
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--color-gold-muted);
+    opacity: 0.6;
+  }
+}
+
+.section {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card,
+.lineBlock,
+.hookCard {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+}
+
+.card {
+  padding: 0.85rem 0.95rem;
+}
+
+.cardTitle {
+  margin: 0 0 0.35rem;
+  color: var(--color-gold-bright);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.cardBody {
+  color: var(--color-text);
+  font-family: var(--font-body-alt);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.twoCol,
+.hookGrid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.twoCol {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hookGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cardCompact {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.doItem,
+.avoidItem {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+}
+
+.doItem {
+  border-left: 3px solid var(--color-teal);
+}
+
+.avoidItem {
+  border-left: 3px solid var(--color-coral);
+}
+
+.doMarker,
+.avoidMarker,
+.hookNum {
+  color: var(--color-gold-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+}
+
+.doText,
+.avoidText {
+  color: var(--color-text);
+  font-family: var(--font-body-alt);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.lineBlock {
+  padding: 0.85rem 0.95rem;
+}
+
+.lineBlock + .lineBlock {
+  margin-top: 0.5rem;
+}
+
+.lineQuote {
+  color: var(--color-text-bright);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.lineContext {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+.hookCard {
+  padding: 0.85rem 0.95rem;
+  border-left: 3px solid var(--color-gold);
+}
+
+.hookTitle {
+  margin: 0.25rem 0 0.35rem;
+  color: var(--color-text-bright);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.hookDesc {
+  color: var(--color-text-muted);
+  font-family: var(--font-body-alt);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.inlineCluster {
+  display: inline-flex;
+  align-items: center;
+}
+
+.arcaneDot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.35rem;
+  border-radius: 999px;
+  background: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 184, 130, 0.15);
+}
+
+@media (max-width: 43.75rem) {
+  .page {
+    padding-top: 0.65rem;
+  }
+
+  .twoCol,
+  .hookGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .doItem,
+  .avoidItem {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

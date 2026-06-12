@@ -1,0 +1,106 @@
+:root {
+  --color-background: #12141a;
+  --color-surface: #1b1f2a;
+  --color-surface-raised: #232835;
+  --color-surface-strong: #2b3140;
+  --color-border: rgba(180, 160, 100, 0.2);
+  --color-border-bright: rgba(180, 160, 100, 0.4);
+  --color-gold: #d4b882;
+  --color-gold-muted: #927b47;
+  --color-gold-bright: #f5dab0;
+  --color-text: #d6ceba;
+  --color-text-muted: #8a7f6c;
+  --color-text-bright: #fdf6e6;
+  --color-purple: #7a6fa8;
+  --color-purple-muted: rgba(122, 111, 168, 0.12);
+  --color-teal: #4a9a7a;
+  --color-teal-muted: rgba(74, 154, 122, 0.12);
+  --color-coral: #c86a4a;
+  --color-coral-muted: rgba(200, 106, 74, 0.12);
+  --color-blue: #4a9eff;
+  --color-blue-muted: rgba(74, 158, 255, 0.12);
+  --color-orange: #ff6b35;
+  --color-orange-muted: rgba(255, 107, 53, 0.12);
+  --color-violet: #a855f7;
+  --color-violet-muted: rgba(168, 85, 247, 0.12);
+
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Cinzel", serif;
+  --font-display-decorative: "Cinzel Decorative", serif;
+  --font-body-alt: "Crimson Pro", serif;
+
+  --navbar-height: 2.25rem;
+  --content-width: 68.75rem;
+  --page-gutter: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--color-background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+body::after {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 60px,
+      rgba(255, 255, 255, 0.008) 60px,
+      rgba(255, 255, 255, 0.008) 61px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(255, 255, 255, 0.008) 60px,
+      rgba(255, 255, 255, 0.008) 61px
+    );
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+dd {
+  margin: 0;
+}
+
+@media (max-width: 43.75rem) {
+  :root {
+    --page-gutter: 0.5rem;
+  }
+}
