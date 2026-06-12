@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import CharacterSheet from "./pages/CharacterSheet/CharacterSheet";
 import Spells from "./pages/Spells/Spells";
@@ -13,7 +13,7 @@ import Subclass from "./pages/Subclass/Subclass";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<CharacterSheet />} />
@@ -28,6 +28,6 @@ export default function App() {
           <Route path="*" element={<p>Page not found</p>} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
