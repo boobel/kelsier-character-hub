@@ -74,7 +74,8 @@ export const inventory: InventoryItem[] = [
   },
   {
     name: "Charcoal stick",
-    description: "Small stick used for sketching and writing. Weight is negligible.",
+    description:
+      "Small stick used for sketching and writing. Weight is negligible.",
     quantity: 1,
     weight: 0,
     type: "Adventuring Gear",
@@ -95,7 +96,8 @@ export const inventory: InventoryItem[] = [
   },
   {
     name: "Tinderbox",
-    description: "Tin containing flint, fire steel, and tinder. Survival kit staple.",
+    description:
+      "Tin containing flint, fire steel, and tinder. Survival kit staple.",
     quantity: 1,
     weight: 1,
     type: "Adventuring Gear",
@@ -109,7 +111,8 @@ export const inventory: InventoryItem[] = [
   },
   {
     name: "FerroMetal Ingot",
-    description: "Small bar of rare alloy for Runic Repeater study and repairs.",
+    description:
+      "Small bar of rare alloy for Runic Repeater study and repairs.",
     quantity: 1,
     weight: 5,
     type: "Material",
@@ -139,9 +142,17 @@ export const inventory: InventoryItem[] = [
   },
   {
     name: "Pouch of clockwork components",
-    description: "Small pouch with gears, springs, and cogs for tinkering and repairs.",
+    description:
+      "Small pouch with gears, springs, and cogs for tinkering and repairs.",
     quantity: 1,
     weight: 4,
     type: "Tools",
+  },
+  {
+    name: "Identification Papers",
+    description: "Set of documens proving identity as Valenor citizen.",
+    quantity: 1,
+    weight: 0,
+    type: "Other",
   },
 ];

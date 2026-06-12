@@ -43,7 +43,7 @@
   letter-spacing: 0.06em;
 }
 
-.spellRow {
+.cantripRow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(80px, 0.75fr) minmax(80px, 0.8fr);
   gap: 0.5rem 1rem;
@@ -52,11 +52,24 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.spellRow:last-child {
+.preparedRow {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) minmax(80px, 0.75fr) minmax(80px, 0.8fr)
+    45px;
+  gap: 0.5rem 1rem;
+  align-items: start;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.cantripRow:last-child,
+.preparedRow:last-child {
   border-bottom: none;
 }
 
-.spellRow > span {
+.cantripRow > span,
+.preparedRow > span {
   min-width: 0;
   color: var(--color-text);
   font-family: var(--font-body-alt);
@@ -65,7 +78,8 @@
   white-space: nowrap;
 }
 
-.spellRow > span:first-child {
+.cantripRow > span:first-child,
+.preparedRow > span:first-child {
   font-weight: 700;
 }
 
@@ -99,13 +113,15 @@
     min-width: 0;
   }
 
-  .spellRow {
+  .cantripRow,
+  .preparedRow {
     grid-template-columns: 1fr;
     gap: 0.25rem;
     padding: 0.55rem 0;
   }
 
-  .spellRow > span {
+  .cantripRow > span,
+  .preparedRow > span {
     font-size: 0.875rem;
   }
 }

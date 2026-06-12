@@ -95,19 +95,19 @@
 
 .portraitCard {
   margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  background:
-    linear-gradient(135deg, rgba(212, 184, 130, 0.06), transparent 42%),
-    var(--color-surface);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
 }
 
 .portraitImage {
   display: block;
   width: 100%;
   height: auto;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background:
+    linear-gradient(135deg, rgba(212, 184, 130, 0.06), transparent 42%),
+    var(--color-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
 }
 
 .glanceGrid {

@@ -19,9 +19,15 @@
 }
 
 .currencyContainer {
+  position: sticky;
+  top: calc(var(--navbar-height) + 2px);
+  z-index: 50;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0 0.75rem;
+  background: var(--color-background);
 }
 
 .currencyBlock {
@@ -75,7 +81,6 @@ p[id="currency-title-silver"] {
 p[id="currency-title-copper"] {
   color: var(--color-coral);
   border-color: rgba(200, 106, 74, 0.3);
-  border-left: 3px solid var(--color-coral);
 }
 
 .currencyInput {
@@ -175,6 +180,7 @@ p[id="currency-title-copper"] {
 
 @media (max-width: 700px) {
   .currencyContainer {
+    top: calc(var(--navbar-height) + 2px);
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }

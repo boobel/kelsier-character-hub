@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Spells.module.scss";
 import { useOutletContext } from "react-router-dom";
 import { renderContentBlock } from "../../utils/renderContentBlock";
-import { Character, ContentBlock, Spell } from "../../types/character";
+import { Character, ContentBlock } from "../../types/character";
 import {
   spellAttackModifier,
   spellSaveDC,
@@ -13,16 +13,60 @@ import {
   abilityScoreModifier,
   formatSigned,
 } from "../../utils/abilityScoreModifier";
+import type { CharacterOutletContext } from "../../types/outlet-context";
+
+const SPELL_SLOT_STORAGE_KEY_PREFIX = "kelsier-character-hub:spell-slot-pips";
+
+const getSpellSlotStorageKey = (name: string, characterClass: string) =>
+  `${SPELL_SLOT_STORAGE_KEY_PREFIX}:${name}:${characterClass}`;
+
+const readStoredSlotUsage = (
+  storageKey: string,
+): Partial<Record<keyof Character["spellSlotsMax"], number>> => {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const storedValue = window.localStorage.getItem(storageKey);
+    if (!storedValue) return {};
+
+    const parsedValue = JSON.parse(storedValue);
+    if (!parsedValue || typeof parsedValue !== "object") return {};
+
+    return Object.entries(parsedValue).reduce<
+      Partial<Record<keyof Character["spellSlotsMax"], number>>
+    >((accumulator, [key, value]) => {
+      if (
+        key in parsedValue &&
+        typeof value === "number" &&
+        Number.isFinite(value)
+      ) {
+        accumulator[key as keyof Character["spellSlotsMax"]] = value;
+      }
+
+      return accumulator;
+    }, {});
+  } catch {
+    return {};
+  }
+};
+
+const writeStoredSlotUsage = (
+  storageKey: string,
+  slotUsage: Partial<Record<keyof Character["spellSlotsMax"], number>>,
+) => {
+  if (typeof window === "undefined") return;
+
+  window.localStorage.setItem(storageKey, JSON.stringify(slotUsage));
+};
 
 const Spells: React.FC = () => {
-  const {
-    identity,
-    spells: initialSpells,
-    stats,
-    abilityScores,
-    spellSlotsMax,
-  } = useOutletContext<Character>();
-  const [spells, setSpells] = useState<Spell[]>(initialSpells);
+  const { identity, spells, setSpells, stats, abilityScores, spellSlotsMax } =
+    useOutletContext<CharacterOutletContext>();
+  const spellSlotStorageKey = getSpellSlotStorageKey(
+    identity.name,
+    identity.class,
+  );
+  spells.sort((a, b) => a.name.localeCompare(b.name));
   const proficiencyBonus = stats.proficiencyBonus;
   const intelligence = abilityScores.intelligence;
   const characterLevel = identity.level;
@@ -34,12 +78,17 @@ const Spells: React.FC = () => {
     intelligenceModifier,
     characterLevel,
   );
+  const overPreparedLimit = currentPreparedSpells > maxPreparedSpells;
   const [expandedSpells, setExpandedSpells] = useState<Record<string, boolean>>(
     {},
   );
   const [expendedSlots, setExpendedSlots] = useState<
     Partial<Record<keyof Character["spellSlotsMax"], number>>
-  >({});
+  >(() => readStoredSlotUsage(spellSlotStorageKey));
+
+  useEffect(() => {
+    writeStoredSlotUsage(spellSlotStorageKey, expendedSlots);
+  }, [expendedSlots, spellSlotStorageKey]);
 
   const togglePrepared = (spellName: string) => {
     setSpells((current) =>
@@ -78,21 +127,20 @@ const Spells: React.FC = () => {
   };
 
   const cantrips = spells.filter((spell) => spell.level === "Cantrip");
+  const alwaysPrepared = spells.filter(
+    (spell) => spell.alwaysPrepared === true,
+  );
   const prepared = spells.filter(
     (spell) => spell.level !== "Cantrip" && spell.prepared,
   );
   const firstLevel = spells.filter(
-    (spell) => spell.level === 1 && !spell.prepared,
+    (spell) => spell.level === 1 && !spell.prepared && !spell.alwaysPrepared,
   );
 
   return (
     <div className="page-container">
       <div className={styles.spellsPage}>
-        <article>
-          <div className={styles.divider}>
-            <p>Spellcasting Summary</p>
-            <hr />
-          </div>
+        <article className={styles.summarySection}>
           <section className={styles.summary}>
             <div className={styles.slotGrid} aria-label="Spell slots">
               {SLOT_LEVELS.map((slot) => {
@@ -139,7 +187,7 @@ const Spells: React.FC = () => {
                 {spellSaveDC(proficiencyBonus, intelligenceModifier)}
               </div>
               <div className={styles.summaryMeta}>
-                8 + prof {formatSigned(intelligenceModifier)}
+                8 + INT + Proficiency Bonus
               </div>
             </div>
             <div className={styles.summaryCard}>
@@ -149,17 +197,21 @@ const Spells: React.FC = () => {
                   spellAttackModifier(proficiencyBonus, intelligenceModifier),
                 )}
               </div>
-              <div className={styles.summaryMeta}>
-                prof {formatSigned(proficiencyBonus)} + INT{" "}
-                {formatSigned(intelligenceModifier)}
-              </div>
+              <div className={styles.summaryMeta}>INT + Proficiency bonus</div>
             </div>
-            <div className={styles.summaryCard}>
+            <div
+              className={`${styles.summaryCard} ${overPreparedLimit ? styles.summaryCardOverLimit : ""}`}
+            >
               <div className={styles.summaryLabel}>Prepared Spells</div>
-              <div className={styles.summaryValue}>
+              <div
+                className={`${styles.summaryValue} ${overPreparedLimit ? styles.summaryValueOverLimit : ""}`}
+              >
                 {currentPreparedSpells}/{maxPreparedSpells}
               </div>
-              <div className={styles.summaryMeta}>Artificer prep cap</div>
+              <div className={styles.summaryMeta}>
+                INT + Half Artificer Lvl
+                {overPreparedLimit ? " - too many prepared spells" : ""}
+              </div>
             </div>
           </section>
         </article>
@@ -201,9 +253,9 @@ const Spells: React.FC = () => {
             </div>
           </section>
           <section>
-            <p className={styles.subTitle}>Prepared</p>
+            <p className={styles.subTitle}>Always Prepared</p>
             <div className={styles.cards}>
-              {prepared.map((spell) => {
+              {alwaysPrepared.map((spell) => {
                 const isExpanded = !!expandedSpells[spell.name];
 
                 return (
@@ -227,19 +279,54 @@ const Spells: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <label
-                      className={styles.toggle}
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      <input
-                        className={styles.checkbox}
-                        type="checkbox"
-                        checked={!!spell.prepared}
-                        onClick={(event) => event.stopPropagation()}
-                        onChange={() => togglePrepared(spell.name)}
-                      />
-                      Prepared
-                    </label>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+          <section>
+            <p className={styles.subTitle}>Prepared</p>
+            <div className={styles.cards}>
+              {prepared.map((spell) => {
+                const isExpanded = !!expandedSpells[spell.name];
+
+                return (
+                  <article
+                    key={spell.name}
+                    className={styles.card}
+                    onClick={() => toggleDescription(spell.name)}
+                  >
+                    <div className={styles.info}>
+                      <div className={styles.header}>
+                        <div className={styles.name}>{spell.name}</div>
+
+                        <label
+                          className={styles.toggle}
+                          onClick={(event) => event.stopPropagation()}
+                        >
+                          <input
+                            className={styles.checkbox}
+                            type="checkbox"
+                            checked={!!spell.prepared}
+                            onClick={(event) => event.stopPropagation()}
+                            onChange={() => togglePrepared(spell.name)}
+                          />
+                          Prepared
+                        </label>
+                      </div>
+                      <div className={styles.meta}>
+                        {spell.metadata.join(" | ")}
+                      </div>
+                      <div
+                        className={`${styles.description} ${!isExpanded ? styles.descriptionHidden : ""}`}
+                      >
+                        <div className={styles.descriptionInner}>
+                          {spell.description.map((block: ContentBlock, index) =>
+                            renderContentBlock(block, index),
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </article>
                 );
               })}
@@ -258,10 +345,31 @@ const Spells: React.FC = () => {
                     onClick={() => toggleDescription(spell.name)}
                   >
                     <div className={styles.info}>
-                      <div className={styles.name}>{spell.name}</div>
-                      <div className={styles.meta}>
-                        {spell.metadata.join(" | ")}
+                      <div>
+                        <div>
+                          <div className={styles.header}>
+                            <div className={styles.name}>{spell.name}</div>
+
+                            <label
+                              className={styles.toggle}
+                              onClick={(event) => event.stopPropagation()}
+                            >
+                              <input
+                                className={styles.checkbox}
+                                type="checkbox"
+                                checked={!!spell.prepared}
+                                onClick={(event) => event.stopPropagation()}
+                                onChange={() => togglePrepared(spell.name)}
+                              />
+                              Prepared
+                            </label>
+                          </div>
+                          <div className={styles.meta}>
+                            {spell.metadata.join(" | ")}
+                          </div>
+                        </div>
                       </div>
+
                       <div
                         className={`${styles.description} ${!isExpanded ? styles.descriptionHidden : ""}`}
                       >
@@ -272,21 +380,6 @@ const Spells: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <label
-                      className={styles.toggle}
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      <input
-                        className={styles.checkbox}
-                        type="checkbox"
-                        readOnly
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          togglePrepared(spell.name);
-                        }}
-                      />
-                      Prepared
-                    </label>
                   </article>
                 );
               })}

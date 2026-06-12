@@ -9,6 +9,11 @@ type Props = {
 
 const SpellsTable = ({ spells }: Props) => {
   const cantrips = spells.filter((spell) => spell.level === "Cantrip");
+  const prepared = spells.filter(
+    (spell) =>
+      (spell.level !== "Cantrip" && spell.prepared) ||
+      spell.alwaysPrepared === true,
+  );
   return (
     <article>
       <div className={sharedStyles.tableShell}>
@@ -26,7 +31,7 @@ const SpellsTable = ({ spells }: Props) => {
             <div aria-hidden="true">
               {cantrips.map((cantrip) => {
                 return (
-                  <div className={styles.spellRow} key={cantrip.name}>
+                  <div className={styles.cantripRow} key={cantrip.name}>
                     <span>{cantrip.name}</span>
                     <span>{cantrip.castingTime}</span>
                     <span>{cantrip.duration}</span>
@@ -45,7 +50,18 @@ const SpellsTable = ({ spells }: Props) => {
               <span>Duration</span>
               <span>Level</span>
             </div>
-            <div aria-hidden="true"></div>
+            <div aria-hidden="true">
+              {prepared.map((spell) => {
+                return (
+                  <div className={styles.preparedRow} key={spell.name}>
+                    <span>{spell.name}</span>
+                    <span>{spell.castingTime}</span>
+                    <span>{spell.duration}</span>
+                    <span>{spell.level}</span>
+                  </div>
+                );
+              })}
+            </div>
           </section>
         </div>
       </div>

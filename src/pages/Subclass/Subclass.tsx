@@ -5,7 +5,9 @@ const Subclass: React.FC = () => {
   return (
     <div className="page-container">
       <div className={styles.parchmentWrap}>
-        <div className={styles.parchEyebrow}>Artificer Specialist · Homebrew</div>
+        <div className={styles.parchEyebrow}>
+          Artificer Specialist · Homebrew
+        </div>
         <div className={styles.parchTitle}>Resonance Gunslinger</div>
         <div className={styles.parchSubtitle}>
           Adapted for Valenor · Based on Gunslinger by Xyrlian
@@ -36,7 +38,9 @@ const Subclass: React.FC = () => {
           <strong>Spark of Resonance</strong> as their focus.
         </p>
         <div className={styles.parchSparkBox}>
-          <div className={styles.parchSparkBoxTitle}>The Spark of Resonance</div>
+          <div className={styles.parchSparkBoxTitle}>
+            The Spark of Resonance
+          </div>
           <p className={`${styles.parchP} ${styles.parchSmallFlush}`}>
             The Spark of Resonance is an innate source of magic you were born
             with.
@@ -106,7 +110,9 @@ const Subclass: React.FC = () => {
             Use the firearm as a <strong>spellcasting focus</strong> for your
             subclass specific spells.
           </li>
-          <li>Your firearms can bear <b>one</b> infusion each.</li>
+          <li>
+            Your firearms can bear <b>one</b> infusion each.
+          </li>
           <li>
             If your firearm calls for a saving throw, use your{" "}
             <strong>Spell Save DC</strong>.
@@ -161,9 +167,7 @@ const Subclass: React.FC = () => {
             Nat 1 → 1d4 force self. Bonus action to vent.
           </div>
           <div className={styles.parchProperty}>
-            <span className={styles.parchPropertyName}>
-              Magnetic Anchor.
-            </span>
+            <span className={styles.parchPropertyName}>Magnetic Anchor.</span>
             When you hit a creature with an attack from this weapon, the
             metallic projectile becomes lodged in the target, turning them into
             a powerful magnetic anchor. You gain the following benefits against
@@ -175,7 +179,7 @@ const Subclass: React.FC = () => {
                 target easier:
                 <ul className={`${styles.parchUl} ${styles.compactListItem}`}>
                   <li>
-                    You are able to roughly ascertain th embeded targets
+                    You are able to roughly ascertain the embeded targets
                     location withing 15ft. of you until the begining of your
                     next turn or until the bullet is destroyed.
                   </li>
@@ -190,9 +194,9 @@ const Subclass: React.FC = () => {
               </li>
               <li>
                 <strong>Anchor Detonation.</strong> As a bonus action, you
-                remotely destabilize the anchor, dealing 1d8 force damage to
-                the target and reducing its speed by 10 ft. until the end of
-                its next turn. The bullet is destroyed and the anchor ends.
+                remotely destabilize the anchor, dealing 1d8 force damage to the
+                target and reducing its speed by 10 ft. until the end of its
+                next turn. The bullet is destroyed and the anchor ends.
               </li>
             </ul>
             You can have only one magnetic anchor active at a time.
@@ -229,8 +233,8 @@ const Subclass: React.FC = () => {
             <span className={styles.parchPropertyName}>Focus.</span>
             If you take the Attack action with this weapon and do not move
             during your turn, you gain one Focus stack (maximum 3). All stacks
-            are lost if you move or become unwillingly moved, are knocked
-            prone, or swap weapons. Each stack grants the following cumulative
+            are lost if you move or become unwillingly moved, are knocked prone,
+            or swap weapons. Each stack grants the following cumulative
             benefits:
             <ul className={`${styles.parchUl} ${styles.compactList}`}>
               <li>
@@ -241,8 +245,8 @@ const Subclass: React.FC = () => {
               <li>
                 <strong>2 Stacks — Attuned.</strong> Your attacks deal an
                 additional 1d8 force damage. On a hit, the target must succeed
-                on a Strength saving throw or have its speed reduced by 10
-                feet until the start of your next turn.
+                on a Strength saving throw or have its speed reduced by 10 feet
+                until the start of your next turn.
               </li>
               <li>
                 <strong>3 Stacks — All-Seeing.</strong> You project a 150-foot
@@ -266,8 +270,8 @@ const Subclass: React.FC = () => {
           Extra Attack <span className={styles.parchLabel}>(5th level)</span>
         </div>
         <p className={styles.parchP}>
-          At 5th level, you can attack twice whenever you take the Attack
-          action on your turn.
+          At 5th level, you can attack twice whenever you take the Attack action
+          on your turn.
         </p>
 
         <div className={styles.parchH2}>
@@ -282,8 +286,8 @@ const Subclass: React.FC = () => {
         <ul className={styles.parchUl}>
           <li>
             <strong>Dazing Shot.</strong> Target must succeed on a Constitution
-            saving throw or suffer disadvantage on attack rolls until the end
-            of its next turn.
+            saving throw or suffer disadvantage on attack rolls until the end of
+            its next turn.
           </li>
           <li>
             <strong>Deadeye Shot.</strong> You take a moment to perfectly align
@@ -295,14 +299,13 @@ const Subclass: React.FC = () => {
           </li>
           <li>
             <strong>Forceful Shot.</strong> The kinetic energy of the shot is
-            immense. Target must succeed on a Strength saving throw or be
-            pushed 10 feet.
+            immense. Target must succeed on a Strength saving throw or be pushed
+            10 feet.
           </li>
           <li>
             <strong>Piercing Shot.</strong> (+1 overload) On a hit, make an
-            additional attack roll with disadvantage against one creature
-            behind the target in a line within the weapon&apos;s first range
-            increment.
+            additional attack roll with disadvantage against one creature behind
+            the target in a line within the weapon&apos;s first range increment.
           </li>
           <li>
             <strong>Violent Shot.</strong> (+2 overload) You push the coils to
@@ -316,7 +319,9 @@ const Subclass: React.FC = () => {
         <p>
           <b>Uses:</b> Proficiency Bonus. Regain on short or long rest.
         </p>
-        <p className={styles.parchP}>You can only apply one Trick Shot per attack.</p>
+        <p className={styles.parchP}>
+          You can only apply one Trick Shot per attack.
+        </p>
       </div>
     </div>
   );

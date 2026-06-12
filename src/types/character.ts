@@ -93,6 +93,7 @@ type SpellBase = {
   description: ContentBlock[];
   duration: string;
   castingTime: number | string;
+  alwaysPrepared?: boolean;
 };
 
 export type Spell =
@@ -112,7 +113,13 @@ export type InventoryItem = {
   description: string;
   quantity: number;
   weight: number;
-  type: "Weapon" | "Armor" | "Adventuring Gear" | "Tools" | "Material";
+  type:
+    | "Weapon"
+    | "Armor"
+    | "Adventuring Gear"
+    | "Tools"
+    | "Material"
+    | "Other";
 };
 
 export type ProficiencyLevel = "none" | "half" | "proficient" | "expertise";

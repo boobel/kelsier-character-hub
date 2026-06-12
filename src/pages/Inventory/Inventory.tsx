@@ -12,53 +12,51 @@ const Inventory: React.FC = () => {
 
   return (
     <div className="page-container">
-      <article>
-        <div className={styles.divider}>
-          <p>Currency</p>
-          <hr />
+      <article className={styles.currencyContainer}>
+        <div className={styles.currencyBlock}>
+          <p className={styles.currencyTitle} id="currency-title-platinum">
+            Platinum
+          </p>
+          <input
+            className={styles.currencyInput}
+            id="currency-platinum"
+            readOnly
+            value={currency.platinum}
+          />
         </div>
-        <section className={styles.currencyContainer}>
-          <div className={styles.currencyBlock}>
-            <p className={styles.currencyTitle} id="currency-title-platinum">
-              Platinum
-            </p>
-            <input
-              className={styles.currencyInput}
-              value={currency.platinum}
-              id="copper"
-            />
-          </div>
-          <div className={styles.currencyBlock}>
-            <p className={styles.currencyTitle} id="currency-title-gold">
-              Gold
-            </p>
-            <input
-              className={styles.currencyInput}
-              value={currency.gold}
-              id="copper"
-            />
-          </div>
-          <div className={styles.currencyBlock}>
-            <p className={styles.currencyTitle} id="currency-title-silver">
-              Silver
-            </p>
-            <input
-              className={styles.currencyInput}
-              value={currency.silver}
-              id="copper"
-            />
-          </div>
-          <div className={styles.currencyBlock}>
-            <p className={styles.currencyTitle} id="currency-title-copper">
-              Copper
-            </p>
-            <input
-              className={styles.currencyInput}
-              value={currency.copper}
-              id="copper"
-            />
-          </div>
-        </section>
+        <div className={styles.currencyBlock}>
+          <p className={styles.currencyTitle} id="currency-title-gold">
+            Gold
+          </p>
+          <input
+            className={styles.currencyInput}
+            id="currency-gold"
+            readOnly
+            value={currency.gold}
+          />
+        </div>
+        <div className={styles.currencyBlock}>
+          <p className={styles.currencyTitle} id="currency-title-silver">
+            Silver
+          </p>
+          <input
+            className={styles.currencyInput}
+            id="currency-silver"
+            readOnly
+            value={currency.silver}
+          />
+        </div>
+        <div className={styles.currencyBlock}>
+          <p className={styles.currencyTitle} id="currency-title-copper">
+            Copper
+          </p>
+          <input
+            className={styles.currencyInput}
+            id="currency-copper"
+            readOnly
+            value={currency.copper}
+          />
+        </div>
       </article>
       <article>
         <div className={styles.divider}>
