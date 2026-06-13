@@ -180,8 +180,7 @@ const Subclass: React.FC = () => {
                 <ul className={`${styles.parchUl} ${styles.compactListItem}`}>
                   <li>
                     You are able to roughly ascertain the embeded targets
-                    location withing 15ft. of you until the begining of your
-                    next turn or until the bullet is destroyed.
+                    location withing 15ft. until the bullet is destroyed.
                   </li>
                   <li>Attacks bend toward the target, ignoring half cover.</li>
                 </ul>
