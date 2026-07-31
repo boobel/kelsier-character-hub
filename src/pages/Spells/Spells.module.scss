@@ -63,6 +63,11 @@
   gap: 0.65rem;
 }
 
+.luckTracker {
+  grid-column: 1 / -1;
+  width: min(100%, 12rem);
+}
+
 .slotBlock {
   display: grid;
   gap: 0.55rem;
@@ -300,6 +305,10 @@
     overflow-x: auto;
     padding-bottom: 0.15rem;
     scrollbar-width: thin;
+  }
+
+  .luckTracker {
+    width: 100%;
   }
 
   .slotPip {

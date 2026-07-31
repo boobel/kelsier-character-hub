@@ -16,9 +16,14 @@ import {
 import type { CharacterOutletContext } from "../../types/outlet-context";
 
 const SPELL_SLOT_STORAGE_KEY_PREFIX = "kelsier-character-hub:spell-slot-pips";
+const LUCK_TRACKER_STORAGE_KEY_PREFIX = "kelsier-character-hub:luck-pips";
+const LUCK_POINTS_MAX = 3;
 
 const getSpellSlotStorageKey = (name: string, characterClass: string) =>
   `${SPELL_SLOT_STORAGE_KEY_PREFIX}:${name}:${characterClass}`;
+
+const getLuckTrackerStorageKey = (name: string, characterClass: string) =>
+  `${LUCK_TRACKER_STORAGE_KEY_PREFIX}:${name}:${characterClass}`;
 
 const readStoredSlotUsage = (
   storageKey: string,
@@ -50,6 +55,24 @@ const readStoredSlotUsage = (
   }
 };
 
+const readStoredTrackerUsage = (storageKey: string) => {
+  if (typeof window === "undefined") return 0;
+
+  try {
+    const storedValue = window.localStorage.getItem(storageKey);
+    if (!storedValue) return 0;
+
+    const parsedValue = JSON.parse(storedValue);
+    if (typeof parsedValue !== "number" || !Number.isFinite(parsedValue)) {
+      return 0;
+    }
+
+    return Math.min(Math.max(parsedValue, 0), LUCK_POINTS_MAX);
+  } catch {
+    return 0;
+  }
+};
+
 const writeStoredSlotUsage = (
   storageKey: string,
   slotUsage: Partial<Record<keyof Character["spellSlotsMax"], number>>,
@@ -59,10 +82,20 @@ const writeStoredSlotUsage = (
   window.localStorage.setItem(storageKey, JSON.stringify(slotUsage));
 };
 
+const writeStoredTrackerUsage = (storageKey: string, usedCharges: number) => {
+  if (typeof window === "undefined") return;
+
+  window.localStorage.setItem(storageKey, JSON.stringify(usedCharges));
+};
+
 const Spells: React.FC = () => {
   const { identity, spells, setSpells, stats, abilityScores, spellSlotsMax } =
     useOutletContext<CharacterOutletContext>();
   const spellSlotStorageKey = getSpellSlotStorageKey(
+    identity.name,
+    identity.class,
+  );
+  const luckTrackerStorageKey = getLuckTrackerStorageKey(
     identity.name,
     identity.class,
   );
@@ -85,10 +118,17 @@ const Spells: React.FC = () => {
   const [expendedSlots, setExpendedSlots] = useState<
     Partial<Record<keyof Character["spellSlotsMax"], number>>
   >(() => readStoredSlotUsage(spellSlotStorageKey));
+  const [expendedLuckPoints, setExpendedLuckPoints] = useState(() =>
+    readStoredTrackerUsage(luckTrackerStorageKey),
+  );
 
   useEffect(() => {
     writeStoredSlotUsage(spellSlotStorageKey, expendedSlots);
   }, [expendedSlots, spellSlotStorageKey]);
+
+  useEffect(() => {
+    writeStoredTrackerUsage(luckTrackerStorageKey, expendedLuckPoints);
+  }, [expendedLuckPoints, luckTrackerStorageKey]);
 
   const togglePrepared = (spellName: string) => {
     setSpells((current) =>
@@ -124,6 +164,12 @@ const Spells: React.FC = () => {
         [slotLevel]: nextUsed,
       };
     });
+  };
+
+  const toggleLuckPoint = (pipIndex: number) => {
+    setExpendedLuckPoints((currentUsed) =>
+      pipIndex + 1 === currentUsed ? pipIndex : pipIndex + 1,
+    );
   };
 
   const cantrips = spells.filter((spell) => spell.level === "Cantrip");
@@ -180,6 +226,38 @@ const Spells: React.FC = () => {
                   </div>
                 );
               })}
+            </div>
+            <div className={styles.luckTracker}>
+              <div className={styles.slotBlock}>
+                <div className={styles.slotHeader}>
+                  <div className={styles.slotLabel}>Luck Points</div>
+                  <div className={styles.slotCount}>
+                    {expendedLuckPoints}/{LUCK_POINTS_MAX}
+                  </div>
+                </div>
+                <div
+                  className={styles.slotPips}
+                  role="group"
+                  aria-label="Luck point charges"
+                >
+                  {Array.from({ length: LUCK_POINTS_MAX }, (_, index) => {
+                    const expended = index < expendedLuckPoints;
+
+                    return (
+                      <button
+                        key={`luck-${index}`}
+                        type="button"
+                        className={`${styles.slotPip} ${styles.slotPipActive} ${expended ? styles.slotPipExpended : ""}`}
+                        onClick={() => {
+                          toggleLuckPoint(index);
+                        }}
+                        aria-label={`Luck point ${index + 1} ${expended ? "expended" : "available"}`}
+                        aria-pressed={expended}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className={styles.summaryCard}>
               <div className={styles.summaryLabel}>Spell Save DC</div>
