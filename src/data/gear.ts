@@ -71,12 +71,8 @@ const runicRepeater: EquippedWeapon = {
     long: 180,
   },
   abilityScore: "intelligence",
-  properties: ["light", "loading", "ranged"],
+  properties: ["light", "ranged"],
   effects: [
-    {
-      name: "Loading",
-      description: p("1 shot. Action to reload."),
-    },
     {
       name: "Resonance Overload",
       description: p(

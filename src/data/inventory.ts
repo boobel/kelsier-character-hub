@@ -83,8 +83,8 @@ export const inventory: InventoryItem[] = [
   {
     name: "Dry Rations",
     description: "Jerky, dried fruit, hardtack, and nuts. One day's worth.",
-    quantity: 10,
-    weight: 2,
+    quantity: 9,
+    weight: 1.8,
     type: "Adventuring Gear",
   },
   {
@@ -154,5 +154,13 @@ export const inventory: InventoryItem[] = [
     quantity: 1,
     weight: 0,
     type: "Other",
+  },
+  {
+    name: "Gold Piece Medallion",
+    description:
+      "A medallion fashioned from a smashed gold piece Kelsier had earned from his first ever Silver Thread assignement.",
+    quantity: 1,
+    weight: 0,
+    type: "Armor",
   },
 ];

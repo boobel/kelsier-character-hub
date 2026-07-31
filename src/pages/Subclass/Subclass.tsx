@@ -155,11 +155,6 @@ const Subclass: React.FC = () => {
             <span className={styles.parchStatLabel}>Properties</span> Light,
             Simple, Ranged
           </div>
-          <hr className={styles.parchHr} />
-          <div className={styles.parchProperty}>
-            <span className={styles.parchPropertyName}>Loading.</span> 1 shot.
-            Action to reload.
-          </div>
           <div className={styles.parchProperty}>
             <span className={styles.parchPropertyName}>
               Resonance Overload.
@@ -216,11 +211,6 @@ const Subclass: React.FC = () => {
           <div className={styles.parchStatLine}>
             <span className={styles.parchStatLabel}>Properties</span>{" "}
             Two-Handed, Heavy, Ranged
-          </div>
-          <hr className={styles.parchHr} />
-          <div className={styles.parchProperty}>
-            <span className={styles.parchPropertyName}>Loading.</span> 1 shot.
-            Action to reload.
           </div>
           <div className={styles.parchProperty}>
             <span className={styles.parchPropertyName}>

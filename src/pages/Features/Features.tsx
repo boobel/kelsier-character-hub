@@ -23,8 +23,8 @@ const Features: React.FC = () => {
               </p>
               <ul>
                 <li>
-                  The object sheds bright light in a 5-foot radius and dim
-                  light for an additional 5 feet.
+                  The object sheds bright light in a 5-foot radius and dim light
+                  for an additional 5 feet.
                 </li>
                 <li>
                   Whenever tapped by a creature, the object emits a recorded
@@ -40,8 +40,8 @@ const Features: React.FC = () => {
                 <li>
                   A static visual effect appears on one of the object’s
                   surfaces. This effect can be a picture, up to 25 words of
-                  text, lines and shapes, or a mixture of these elements, as
-                  you like.
+                  text, lines and shapes, or a mixture of these elements, as you
+                  like.
                 </li>
               </ul>
               <p>
@@ -67,17 +67,16 @@ const Features: React.FC = () => {
               <p>
                 You’ve studied the workings of magic and how to cast spells,
                 channeling the magic through objects. To observers, you don’t
-                appear to be casting spells in a conventional way; you appear
-                to produce wonders from mundane items and outlandish
-                inventions.
+                appear to be casting spells in a conventional way; you appear to
+                produce wonders from mundane items and outlandish inventions.
               </p>
               <h3>Tools required</h3>
               <p>
                 You produce your artificer spell effects through your tools. You
                 must have a spellcasting focus - specifically, a set of
                 artisan’s tools or a spellcasting focus item - in hand when you
-                cast any spell with this feature. An resonance firearm counts
-                as a spellcasting focus for your artificer spells.
+                cast any spell with this feature. An resonance firearm counts as
+                a spellcasting focus for your artificer spells.
               </p>
               <h3>Cantrips</h3>
               <p>
@@ -126,9 +125,9 @@ const Features: React.FC = () => {
             <div className={styles.source}>Artificier · Level 2</div>
             <div className={styles.desc}>
               <p>
-                You gain the ability to imbue mundane items with certain
-                magical infusions. The magic items you create with this feature
-                are effectively prototypes of permanent items.
+                You gain the ability to imbue mundane items with certain magical
+                infusions. The magic items you create with this feature are
+                effectively prototypes of permanent items.
               </p>
               <h3>Infusions Known</h3>
               <p>
@@ -141,15 +140,15 @@ const Features: React.FC = () => {
                 Whenever you finish a long rest, you can touch a non-magical
                 object and imbue it with one of your artificer infusions,
                 turning it into a magic item. An infusion works on only certain
-                kinds of objects, as specified in the infusion’s description.
-                If the item requires attunement, you can attune yourself to it
-                the instant you infuse the item.
+                kinds of objects, as specified in the infusion’s description. If
+                the item requires attunement, you can attune yourself to it the
+                instant you infuse the item.
               </p>
               <p>
-                Your infusion remains in an item indefinitely, but when you
-                die, the infusion vanishes after a number of days have passed
-                equal to your Intelligence modifier. The infusion also vanishes
-                if you give up your knowledge of the infusion for another one.
+                Your infusion remains in an item indefinitely, but when you die,
+                the infusion vanishes after a number of days have passed equal
+                to your Intelligence modifier. The infusion also vanishes if you
+                give up your knowledge of the infusion for another one.
               </p>
               <p>
                 You can infuse more than one nonmagical object at the end of a
@@ -205,6 +204,15 @@ const Features: React.FC = () => {
               </p>
               <h3>Ferromagnetic Pull</h3>
               <p>Grants the Ferromangetic Pull cantrip.</p>
+              <h3>Imbued Firearm</h3>
+              <p>
+                You can channel your spark into your firearms. Whenever you
+                finish a short or long rest, you can touch one of your firearms.
+                Until you choose a different weapon with this feature, attacks
+                made with that weapon count as magical for the purpose of
+                overcoming resistance and immunity to non-magical attacks and
+                damage.
+              </p>
             </div>
           </article>
 
@@ -217,10 +225,10 @@ const Features: React.FC = () => {
                 errands between blacksmiths, tinkerers and artificiers before
                 you ever picked up a tool yourself. You learned to read a
                 schematic before you could read a map, to recognise when a
-                mechanism needed a gear replaced versus a formula rewritten.
-                The craftspeople you served taught you, mostly without meaning
-                to. By the time you left, you weren't their runner anymore. You
-                were their peer.
+                mechanism needed a gear replaced versus a formula rewritten. The
+                craftspeople you served taught you, mostly without meaning to.
+                By the time you left, you weren't their runner anymore. You were
+                their peer.
               </p>
               <h3>Skill Proficiencies</h3>
               <p>Sleight of Hand, Investigation</p>
@@ -252,28 +260,39 @@ const Features: React.FC = () => {
             <div className={styles.desc}>
               <p>
                 Being a citizen with considerable magical ability you've been
-                bestowed with an Arcane Mark. It comes in a form of an
-                invisible tattoo underneither your left eye. The tattoo can be
-                revealed when illuminated with a specific source.
+                bestowed with an Arcane Mark. It comes in a form of an invisible
+                tattoo underneither your left eye. The tattoo can be revealed
+                when illuminated with a specific source.
               </p>
             </div>
           </article>
 
           <article className={styles.card}>
-            <div className={styles.name}>Gunner</div>
+            <div className={styles.name}>Lucky</div>
             <div className={styles.source}>Variant Human Feature</div>
             <div className={styles.desc}>
               <p>
-                You have a quick hand and keen eye when employing firearms,
-                granting you the following benefits:
+                You have 3 luck points. Whenever you make an attack roll, an
+                ability check, or a saving throw, you can spend one luck point
+                to roll an additional d20. You can choose to spend one of your
+                luck points after you roll the die, but before the outcome is
+                determined. You choose which of the d20s is used for the attack
+                roll, ability check, or saving throw.
               </p>
-              <ul>
-                <li>You ignore the loading property of firearms.</li>
-                <li>
-                  Being within 5 feet of a hostile creature doesn't impose
-                  disadvantage on your ranged attack rolls.
-                </li>
-              </ul>
+              <p>
+                You can also spend one luck point when an attack roll is made
+                against you. Roll a d20, and then choose whether the attack uses
+                the attacker’s roll or yours.
+              </p>
+              <p>
+                If more than one creature spends a luck point to influence the
+                outcome of a roll, the points cancel each other out; no
+                additional dice are rolled.
+              </p>
+              <p>
+                You regain your expended luck points when you finish a long
+                rest.
+              </p>
             </div>
           </article>
         </section>
