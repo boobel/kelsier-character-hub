@@ -18,9 +18,9 @@ export const character = {
   },
   abilityScores: {
     strength: 10,
-    dexterity: 13,
+    dexterity: 14,
     constitution: 14,
-    intelligence: 17,
+    intelligence: 18,
     wisdom: 12,
     charisma: 14,
   },
